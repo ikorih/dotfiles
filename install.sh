@@ -45,7 +45,7 @@ main() {
   read command
   case $command in
     font-nerd)
-      nerd_fonts SourceCodePro
+      nerd_fonts Meslo
       main
       ;;
     quit)
