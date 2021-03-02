@@ -1,0 +1,19 @@
+## for homebrew
+export PATH=/usr/local/sbin:$PATH
+
+## for nodenv
+eval "$(nodenv init -)"
+export PATH="$HOME/.nodenv/bin:$PATH"
+
+## for rbenv
+eval "$(rbenv init - zsh)"
+export PATH="$HOME/.rbenv/shims:$PATH"
+
+# alias
+alias vim='nvim'
+
+# rustup
+export CARGO_HOME="$HOME/.cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
+
+

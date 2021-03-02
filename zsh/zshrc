@@ -1,0 +1,109 @@
+#                                     _
+#                             _______| |__  _ __ ___ 
+#                            |_  / __| '_ \| '__/ __|
+#                           _ / /\__ \ | | | | | (__ 
+#                          (_)___|___/_| |_|_|  \___|
+#
+
+#--------------------------------------
+# Environment
+#--------------------------------------
+
+# Set language environment
+export LANG=ja_JP.UTF-8
+
+##--------------------------------------
+# History
+#--------------------------------------
+
+HISTFILE=$HOME/.zsh/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+# 同じコマンドを重複して記録しない
+setopt hist_ignore_dups
+# 履歴ファイルに時刻を記録
+setopt extended_history
+# ヒストリファイルを共有する
+setopt share_history
+# 複数の zsh を同時に使う時など history ファイルに上書きせず追加
+setopt append_history
+
+
+
+#--------------------------------------
+# Completion
+#--------------------------------------
+
+autoload -Uz compinit
+compinit -u
+# ビープ音を鳴らさないようにする
+setopt nolistbeep
+# 補完候補を一覧表示
+setopt auto_list
+# 補完候補を詰めて表示
+setopt list_packed
+# 補完候補の色付け
+export ZLS_COLORS=$LS_COLORS
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# 大文字・小文字を区別しない(大文字を入力した場合は区別する)
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# 補完候補を一覧表示したとき、Tabや矢印で選択できるようにする
+zstyle ':completion:*:default' menu select=1 
+# --prefix=/usr などの = 以降でも補完
+setopt magic_equal_subst
+# カッコの対応などを自動的に補完する
+setopt auto_param_keys
+# TAB で順に補完候補を切り替える
+setopt auto_menu
+# cdなしで移動
+setopt auto_cd
+# コマンドミスを修正
+setopt correct
+# 補完候補の色づけ
+# export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+#--------------------------------------
+# Color
+#--------------------------------------
+
+autoload -Uz colors
+colors
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+alias ls='ls -G'
+
+# PROMPT="%{$fg[green]%}%m%(!.#.$) %{$reset_color%}"
+# PROMPT2="%{$fg[green]%}%_> %{$reset_color%}"
+# SPROMPT="%{$fg[red]%}correct: %R -> %r [nyae]? %{$reset_color%}"
+# RPROMPT="%{$fg[cyan]%}[%~]%{$reset_color%}"
+
+#--------------------------------------
+# Prompt
+#--------------------------------------
+
+PROMPT=" %{[38;5;214m%}%~%{[0m%}
+ %{[38;5;81m%}%(!.#.$)%{[0m%} "
+
+# vcs_info
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+RPROMPT='${vcs_info_msg_0_} '$RPROMPT
+
+alias ide='
+tmux split-window -v -p 21
+tmux split-window -h -p 66
+tmux split-window -h -p 50
+'
+# load .zshrc_local
+if [ -e ~/.zshrc_local ]; then
+    source ~/.zshrc_local
+fi
+

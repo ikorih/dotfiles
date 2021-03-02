@@ -1,0 +1,21 @@
+## for homebrew
+# export PATH="/opt/homebrew/bin:$PATH"
+# Support for two Homebrew installations
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
+
+## for nodenv
+eval "$(nodenv init -)"
+export PATH="$HOME/.nodenv/bin:$PATH"
+
+## for rbenv
+# eval "$(rbenv init - zsh)"
+# export PATH="$HOME/.rbenv/shims:$PATH"
+
+# alias
+alias vim='nvim'
+
+# rustup
+export CARGO_HOME="$HOME/.cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
+
