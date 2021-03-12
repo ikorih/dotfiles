@@ -8,51 +8,10 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 
-" coc--explorer
-" let g:coc_explorer_global_presets = {
-" \   '.vim': {
-" \     'root-uri': '~/.vim',
-" \   },
-" \   'floatingTop': {
-" \     'position': 'floating',
-" \     'floating-position': 'center-top',
-" \     'open-action-strategy': 'sourceWindow',
-" \   },
-" \   'floatingLeftside': {
-" \     'position': 'floating',
-" \     'floating-position': 'left-center',
-" \     'floating-width': 50,
-" \     'floating-height': -10,
-" \     'open-action-strategy': 'sourceWindow',
-" \   },
-" \   'floatingRightside': {
-" \     'position': 'floating',
-" \     'floating-position': 'right-center',
-" \     'floating-width': 50,
-" \     'floating-height': -10,
-" \     'open-action-strategy': 'sourceWindow',
-" \   },
-" \   'simplify': {
-" \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-" \   },
-" \   'a': {
-" \     'quit-on-open': v:true,
-" \     'file-child-template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [filename growRight 1 omitCenter 1][modified]',
-" \     'file-child-labeling-template': '[fullpath][size][modified][readonly]',
-" \   },
-" \   'b': {
-" \     'file-child-template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [filename growRight 1 omitCenter 1][size]',
-" \     'file-child-labeling-template': '[fullpath][size][created][modified][accessed][readonly]',
-" \   },
-" \   'buffer': {
-" \     'sources': [{'name': 'buffer', 'expand': v:true}],
-" \   }
-" \ }
-
 nmap <Leader>t :CocCommand explorer<CR>
 " autocmd User CocNvimInit :CocCommand explorer
 " nmap <space>f :CocCommand explorer --preset floating<CR>
-" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " autocmd VimEnter * execute 'CocCommand explorer'
 
@@ -85,25 +44,8 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
-
-
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
 " Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
+" set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.

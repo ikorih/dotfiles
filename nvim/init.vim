@@ -17,6 +17,7 @@ if exists('&ambw')
 	set ambiwidth=single " □や○文字が崩れる問題を解決
 endif
 set nobackup " バックアップファイルを作らない
+set nowritebackup
 set noswapfile " スワップファイルを作らない
 set updatetime=300 "記号が更新されるタイミング
 
@@ -234,8 +235,11 @@ source ~/.config/nvim/plugins/vim-colors-solarized.rc.vim
 " vim-airline
 source ~/.config/nvim/plugins/vim-airline.rc.vim
 
-" denite.nvim
-source ~/.config/nvim/plugins/denite.rc.vim
+" vim-fzf
+source ~/.config/nvim/plugins/fzf.rc.vim
+
+" " denite.nvim
+" source ~/.config/nvim/plugins/denite.rc.vim
 
 " ale : 非同期コードチェック
 source ~/.config/nvim/plugins/ale.rc.vim
@@ -244,7 +248,7 @@ source ~/.config/nvim/plugins/ale.rc.vim
 " source ~/.config/nvim/plugins/preffier.rc.vim
 
 " defx.nvim : ツリー型エクスプローラ
-source ~/.config/nvim/plugins/defx.rc.vim
+" source ~/.config/nvim/plugins/defx.rc.vim
 
 " NERDTree : ツリー型エクスプローラ 
 " source ~/.config/nvim/plugins/NERDTree.rc.vim

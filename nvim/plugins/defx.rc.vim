@@ -71,6 +71,7 @@ call defx#custom#option('_', {
 			\ 'buffer_name': 'exlorer',
 			\ 'toggle': 1,
 			\ 'resume': 1,
+			\ 'columns': 'indent:icons:filename:mark',
 			\ })
 
 " autocmd BufWritePost * call defx#redraw()
