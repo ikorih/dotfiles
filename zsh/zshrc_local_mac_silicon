@@ -1,8 +1,12 @@
 ## for homebrew
 # export PATH="/opt/homebrew/bin:$PATH"
 # Support for two Homebrew installations
-export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
-alias ibrew='arch -x86_64 /usr/local/bin/brew'
+# export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+# alias ibrew='arch -x86_64 /usr/local/bin/brew'
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+## for anyenv
+eval "$(anyenv init -)"
 
 ## for nodenv
 eval "$(nodenv init -)"
