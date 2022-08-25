@@ -156,16 +156,15 @@ augroup END
 " 対象が1件しかなくても常に補完ウィンドウを表示していて、noinsertで補完ウィンドウを表示時に挿入しない
 " set completeopt += menuone,noinsert
 " set completeopt+=noinsert,menuone
-set completeopt=menu,menuone,noinsert,noselect
+" set completeopt=menu,menuone,noinsert,noselect
 
 " 補完表示時のEnterで改行をしない
-inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+" inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
-inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
-inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+" inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+" inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 
 " もっさり対策----------------------------------
-
 set ttyfast                " Faster redrawing.
 set lazyredraw             " Only redraw when necessary.
 
@@ -174,11 +173,8 @@ set report      =0         " Always report changed lines.
 syntax sync minlines=256
 
 
-
-
-
 " カスタム
-" au BufRead,BufNewFile *.njk setfiletype html
+autocmd BufNewFile,BufRead *.njk  set filetype=html
 
 
 
@@ -218,7 +214,19 @@ filetype plugin indent on
 
 
 
-
+"" 自動python3の仮想インストール
+if has('nvim')
+  let s:python3 = system('which python3')
+  if strlen(s:python3) != 0
+    let s:python3_dir = $HOME . '/.cache/nvim/python3'
+    if ! isdirectory(s:python3_dir)
+      call system('python3 -m venv ' . s:python3_dir)
+      call system('source ' . s:python3_dir . '/bin/activate && pip install neovim flake8 jedi')
+    endif
+    let g:python3_host_prog = s:python3_dir . '/bin/python'
+    let $PATH = s:python3_dir . '/bin:' . $PATH
+  endif
+endif
 
 
 
@@ -238,20 +246,8 @@ source ~/.config/nvim/plugins/vim-airline.rc.vim
 " vim-fzf
 source ~/.config/nvim/plugins/fzf.rc.vim
 
-" " denite.nvim
-" source ~/.config/nvim/plugins/denite.rc.vim
-
 " ale : 非同期コードチェック
 source ~/.config/nvim/plugins/ale.rc.vim
-
-" prettier
-" source ~/.config/nvim/plugins/preffier.rc.vim
-
-" defx.nvim : ツリー型エクスプローラ
-" source ~/.config/nvim/plugins/defx.rc.vim
-
-" NERDTree : ツリー型エクスプローラ 
-" source ~/.config/nvim/plugins/NERDTree.rc.vim
 
 " indentLine
 source ~/.config/nvim/plugins/indentLine.rc.vim
@@ -261,15 +257,6 @@ source ~/.config/nvim/plugins/editorconfig-vim.rc.vim
 
 " emmet-vim
 source ~/.config/nvim/plugins/emmet-vim.rc.vim
-
-" neosnippet
-" source ~/.config/nvim/plugins/neosnippet.rc.vim
-
-" deoplete.nvim
-" source ~/.config/nvim/plugins/deoplete.rc.vim
-
-" " LanguageClient-neovim
-" source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 
 " coc.nvim 
 source ~/.config/nvim/plugins/coc.rc.vim
