@@ -24,8 +24,8 @@ repo = 'othree/es.next.syntax.vim'
 [[plugins]] # シンタックスハイライト全般
 repo = 'sheerun/vim-polyglot'
 
-[[plugins]] # nunjucks
-repo  = 'Glench/Vim-Jinja2-Syntax'
+# [[plugins]] # nunjucks
+# repo  = 'Glench/Vim-Jinja2-Syntax'
 
 ########################################################
 
@@ -56,6 +56,11 @@ repo = 'posva/vim-vue'
 
 ##################  Utilitis  ###################
 
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
 
 # ファイラー系
 
@@ -103,11 +108,6 @@ repo = 'honza/vim-snippets'
 
 [[plugins]] # ステータスバー装飾
 repo = 'vim-airline/vim-airline'
-
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-merged = '0'
 
 [[plugins]] # Emmet
 repo = 'mattn/emmet-vim'

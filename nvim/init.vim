@@ -175,6 +175,7 @@ syntax sync minlines=256
 
 " カスタム
 autocmd BufNewFile,BufRead *.njk  set filetype=html
+set pumheight=10 "auto completeのpopupの高さを10に
 
 
 
