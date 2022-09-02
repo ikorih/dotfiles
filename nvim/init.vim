@@ -222,7 +222,7 @@ if has('nvim')
     let s:python3_dir = $HOME . '/.cache/nvim/python3'
     if ! isdirectory(s:python3_dir)
       call system('python3 -m venv ' . s:python3_dir)
-      call system('source ' . s:python3_dir . '/bin/activate && pip install neovim flake8 jedi')
+      call system('source ' . s:python3_dir . '/bin/activate && pip install pynvim neovim flake8 jedi')
     endif
     let g:python3_host_prog = s:python3_dir . '/bin/python'
     let $PATH = s:python3_dir . '/bin:' . $PATH
