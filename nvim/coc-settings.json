@@ -1,10 +1,10 @@
 
 // coc-settings.json
 {
-  "explorer.width": 35,
+  "explorer.width": 28,
   "explorer.file.showHiddenFiles": true,
-  "explorer.file.reveal.auto": true, // by default it will navigate to currently opened file in the tree.
-  "explorer.previewAction.onHover": false,
+  "explorer.file.reveal.auto": false, // by default it will navigate to currently opened file in the tree.
+  "explorer.previewAction.onHover": true,
   "explorer.icon.enableNerdfont": true,
   "explorer.icon.source": "vim-devicons",
   "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]", 
@@ -115,6 +115,6 @@
     "typeParameter": "\uf278",
     "default": "\uf29c"
   },
-  "emmet.priority": 1
+  "emmet.priority": 0
 }
 

@@ -62,7 +62,10 @@ repo = 'posva/vim-vue'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-rev = 'release'
+rev = 'a796c43f'
+# rev = '''
+# {'release': 'a796c43f'}
+# '''
 merged = '0'
 
 # ファイラー系
@@ -105,9 +108,6 @@ repo = 'cohama/lexima.vim'
 
 [[plugins]] # dot repeateをマクロ単位に
 repo = 'tpope/vim-repeat'
-
-[[plugins]]
-repo = 'honza/vim-snippets'
 
 [[plugins]] # ステータスバー装飾
 repo = 'vim-airline/vim-airline'

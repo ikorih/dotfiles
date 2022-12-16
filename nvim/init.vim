@@ -259,8 +259,8 @@ source ~/.config/nvim/plugins/indentLine.rc.vim
 " editorconfig-vim
 source ~/.config/nvim/plugins/editorconfig-vim.rc.vim
 
-" " emmet-vim
-" source ~/.config/nvim/plugins/emmet-vim.rc.vim
+" emmet-vim
+source ~/.config/nvim/plugins/emmet-vim.rc.vim
 
 " coc.nvim 
 source ~/.config/nvim/plugins/coc.rc.vim

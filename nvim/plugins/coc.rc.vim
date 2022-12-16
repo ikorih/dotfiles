@@ -1,6 +1,6 @@
 
 " 拡張機能自動インストール
-let g:coc_global_extensions = ['coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets', 'coc-stylelint', 'coc-html', 'coc-highlight', 'coc-explorer', 'coc-yaml', 'coc-emmet', 'coc-vimlsp', 'coc-yank', 'coc-ultisnips', 'coc-word', 'coc-syntax', 'coc-css', 'coc-phpls' ]
+let g:coc_global_extensions = ['coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets', 'coc-stylelint', 'coc-html', 'coc-highlight', 'coc-explorer', 'coc-yaml', 'coc-vimlsp', 'coc-yank', 'coc-ultisnips', 'coc-word', 'coc-syntax', 'coc-css', 'coc-phpls' ]
 " coc-emmetはautocomplete展開時に<C-y>する必要があり、他のsuggestion展開と挙動が違い混乱するので外す
 
 " {{coc-prettier}}
