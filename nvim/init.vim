@@ -238,8 +238,11 @@ endif
 """ プラグイン毎の設定
 
 
-" vim-colors-solarized
-source ~/.config/nvim/plugins/vim-colors-solarized.rc.vim
+" " vim-colors-solarized
+" source ~/.config/nvim/plugins/vim-colors-solarized.rc.vim
+
+" gruvbox
+source ~/.config/nvim/plugins/gruvbox.rc.vim
 
 " vim-airline
 source ~/.config/nvim/plugins/vim-airline.rc.vim
@@ -256,8 +259,8 @@ source ~/.config/nvim/plugins/indentLine.rc.vim
 " editorconfig-vim
 source ~/.config/nvim/plugins/editorconfig-vim.rc.vim
 
-" emmet-vim
-source ~/.config/nvim/plugins/emmet-vim.rc.vim
+" " emmet-vim
+" source ~/.config/nvim/plugins/emmet-vim.rc.vim
 
 " coc.nvim 
 source ~/.config/nvim/plugins/coc.rc.vim
@@ -323,4 +326,44 @@ augroup vimrc-auto-cursorline
   endfunction
 augroup END
 
+
+" :SyntaxInfoというコマンドが使用可能になり，実際にカーソルの下にあるコードのハイライトグループがわかる
+" https://cohama.hateblo.jp/entry/2013/08/11/020849
+function! s:get_syn_id(transparent)
+  let synid = synID(line("."), col("."), 1)
+  if a:transparent
+    return synIDtrans(synid)
+  else
+    return synid
+  endif
+endfunction
+function! s:get_syn_attr(synid)
+  let name = synIDattr(a:synid, "name")
+  let ctermfg = synIDattr(a:synid, "fg", "cterm")
+  let ctermbg = synIDattr(a:synid, "bg", "cterm")
+  let guifg = synIDattr(a:synid, "fg", "gui")
+  let guibg = synIDattr(a:synid, "bg", "gui")
+  return {
+        \ "name": name,
+        \ "ctermfg": ctermfg,
+        \ "ctermbg": ctermbg,
+        \ "guifg": guifg,
+        \ "guibg": guibg}
+endfunction
+function! s:get_syn_info()
+  let baseSyn = s:get_syn_attr(s:get_syn_id(0))
+  echo "name: " . baseSyn.name .
+        \ " ctermfg: " . baseSyn.ctermfg .
+        \ " ctermbg: " . baseSyn.ctermbg .
+        \ " guifg: " . baseSyn.guifg .
+        \ " guibg: " . baseSyn.guibg
+  let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
+  echo "link to"
+  echo "name: " . linkedSyn.name .
+        \ " ctermfg: " . linkedSyn.ctermfg .
+        \ " ctermbg: " . linkedSyn.ctermbg .
+        \ " guifg: " . linkedSyn.guifg .
+        \ " guibg: " . linkedSyn.guibg
+endfunction
+command! SyntaxInfo call s:get_syn_info()
 

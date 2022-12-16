@@ -6,8 +6,11 @@ repo = 'Shougo/dein.vim'
 
 ######################  Colors  ########################
 
-[[plugins]] # solarized
-repo = 'altercation/vim-colors-solarized'
+# [[plugins]] # solarized
+# repo = 'altercation/vim-colors-solarized'
+
+[[plugins]] # Gruvbox
+repo = 'morhetz/gruvbox'
 
 ########################################################
 
