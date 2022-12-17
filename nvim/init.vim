@@ -30,7 +30,7 @@ syntax enable " enable は現在の色設定を変更しない。そのため、
 
 " UI系----------------------------------  
 set number " 行番号を表示
-set relativenumber " 表示順をrelative
+" set relativenumber " 表示順をrelative
 set cursorline "カーソル行の強調表示
 " set nocursorline
 set showmatch " 括弧の対応関係を一瞬表示する
