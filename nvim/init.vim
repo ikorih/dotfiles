@@ -280,6 +280,8 @@ source ~/.config/nvim/plugins/vim-expand-region.rc.vim
 " tcommen_vim
 source ~/.config/nvim/plugins/tcomment.rc.vim
 
+" copilot
+source ~/.config/nvim/plugins/copilot.rc.vim
 
 
 " 初期状態はcursorlineを表示しない
