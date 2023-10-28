@@ -15,6 +15,7 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 
 # alias
 alias vim='nvim'
+alias brew='sudo -Hu homebrew brew'
 
 # rustup
 export CARGO_HOME="$HOME/.cargo"
