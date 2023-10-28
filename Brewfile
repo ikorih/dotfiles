@@ -25,11 +25,11 @@ cask "karabiner-elements"
 cask "microsoft-auto-update"
 cask "microsoft-office"
 cask "notion"
-cask "stay"
 cask "sublime-text"
 cask "transmit"
 cask "visual-studio-code"
 cask "zoom"
 mas "LINE", id: 539883307
-mas "WinArchiver Lite", id: 414855915
+mas "Magnet", id: 441258766
+mas "Stay", id: 435410196
 mas "Xcode", id: 497799835
