@@ -20,6 +20,7 @@ set nobackup " バックアップファイルを作らない
 set nowritebackup
 set noswapfile " スワップファイルを作らない
 set updatetime=300 "記号が更新されるタイミング
+set mouse= " マウスを使わない
 
 
 
