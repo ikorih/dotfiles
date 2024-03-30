@@ -250,6 +250,7 @@ source ~/.config/nvim/plugins/vim-airline.rc.vim
 
 " vim-fzf
 source ~/.config/nvim/plugins/fzf.rc.vim
+set rtp+=/opt/homebrew/opt/fzf
 
 " ale : 非同期コードチェック
 source ~/.config/nvim/plugins/ale.rc.vim
