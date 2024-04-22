@@ -3,6 +3,9 @@
 -- Add any additional options here
 
 vim.opt.mouse = ""
+vim.opt.wrap = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
 -- Set filetype for nunjucks files
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, { pattern = "*.njk", command = "set filetype=html" })

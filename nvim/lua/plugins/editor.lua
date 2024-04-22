@@ -1,17 +1,25 @@
 return {
-  {
-    enabled = false,
-    "folke/flash.nvim",
-    ---@type Flash.Config
-    opts = {
-      search = {
-        forward = true,
-        multi_window = false,
-        wrap = false,
-        incremental = true,
-      },
-    },
-  },
+  -- {
+  --   enabled = false,
+  --   "folke/flash.nvim",
+  --   ---@type Flash.Config
+  --   opts = {
+  --     search = {
+  --       forward = true,
+  --       multi_window = false,
+  --       wrap = false,
+  --       incremental = true,
+  --     },
+  --   },
+  -- },
+
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   event = "InsertEnter",
+  --   config = true,
+  --   -- use opts = {} for passing setup options
+  --   -- this is equalent to setup({}) function
+  -- },
 
   {
     "terryma/vim-expand-region",
@@ -60,28 +68,6 @@ return {
           settings = {
             -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
             workingDirectories = { mode = "auto" },
-          },
-        },
-        emmet_ls = {
-          filetypes = {
-            "html",
-            "typescriptreact",
-            "javascriptreact",
-            "css",
-            "sass",
-            "scss",
-            "less",
-            "php",
-            "javascript",
-            "typescript",
-          },
-          init_options = {
-            html = {
-              options = {
-                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L26
-                ["bem.enabled"] = true,
-              },
-            },
           },
         },
       },
@@ -154,6 +140,17 @@ return {
           })
         end,
         desc = "Find Plugin File",
+      },
+      {
+        "<C-t>",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.find_files({
+            no_ignore = false,
+            hidden = true,
+          })
+        end,
+        desc = "Lists files in your current working directory, respects .gitignore",
       },
       {
         ";f",
