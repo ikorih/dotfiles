@@ -42,6 +42,8 @@ setup_links() {
 	ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 	ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 	ln -s ~/dotfiles/zsh/zshrc_local_mac_silicon ~/.zshrc_local
+	# Ensure .config directory exists
+	mkdir -p ~/.config
 	ln -s ~/dotfiles/nvim ~/.config/nvim
 	ln -s ~/dotfiles/fish ~/.config/fish
 	ln -s ~/dotfiles/lazygit ~/.config/lazygit
