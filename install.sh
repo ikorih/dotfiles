@@ -24,6 +24,7 @@ usage() {
 Commands:
   font-nerd (install Nerd Font)
   setup-links (create symbolic links for Apple Silicon)
+  setup-git (configure global Git settings)
   quit
 EOF
 	echo $NORMAL
@@ -48,6 +49,13 @@ setup_links() {
 	echo "${GREEN}Symbolic links created successfully!${NORMAL}"
 }
 
+setup_git() {
+	git config --global user.name "Hiroki Fujikami"
+	git config --global user.email "ikorih@protonmail.com"
+	git config --global core.editor 'vim -c "set fenc=utf-8"'
+	echo "${GREEN}Git configuration set successfully!${NORMAL}"
+}
+
 # main
 # --------------
 main() {
@@ -61,6 +69,10 @@ main() {
 		;;
 	setup-links)
 		setup_links
+		main
+		;;
+	setup-git)
+		setup_git
 		main
 		;;
 	quit)
