@@ -1,5 +1,8 @@
-# ubuntu 18.0.4
+# ubuntu
 #
+
+# neovim 
+export PATH="$PATH:/opt/nvim/"
 
 export PATH=$PATH:/usr/local/bin/
 

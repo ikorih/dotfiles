@@ -23,7 +23,7 @@ usage() {
 	cat <<\EOF
 Commands:
   font-nerd (install Nerd Font)
-  setup-links (create symbolic links for Apple Silicon)
+  setup-links (create symbolic links for Apple Silicon or Ubuntu)
   setup-git (configure global Git settings)
   quit
 EOF
@@ -41,7 +41,14 @@ nerd_fonts() {
 setup_links() {
 	ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 	ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
-	ln -s ~/dotfiles/zsh/zshrc_local_mac_silicon ~/.zshrc_local
+
+	# Determine the OS type and create the appropriate .zshrc_local link
+	if [[ "$(uname)" == "Darwin" ]]; then
+		ln -s ~/dotfiles/zsh/zshrc_local_mac_silicon ~/.zshrc_local
+	elif [[ "$(uname)" == "Linux" ]]; then
+		ln -s ~/dotfiles/zsh/zshrc_local_mac_ubuntu ~/.zshrc_local
+	fi
+
 	# Ensure .config directory exists
 	mkdir -p ~/.config
 	ln -s ~/dotfiles/nvim ~/.config/nvim
