@@ -46,7 +46,7 @@ setup_links() {
 	if [[ "$(uname)" == "Darwin" ]]; then
 		ln -s ~/dotfiles/zsh/zshrc_local_mac_silicon ~/.zshrc_local
 	elif [[ "$(uname)" == "Linux" ]]; then
-		ln -s ~/dotfiles/zsh/zshrc_local_mac_ubuntu ~/.zshrc_local
+		ln -s ~/dotfiles/zsh/zshrc_local_ubuntu ~/.zshrc_local
 	fi
 
 	# Ensure .config directory exists
