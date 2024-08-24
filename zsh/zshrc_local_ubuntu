@@ -18,7 +18,7 @@ eval "$(pyenv init -)"
 # nodenv
 export NODENV_ROOT="$HOME/.nodenv"
 export PATH="$NODENV_ROOT/bin:$PATH"
-eval "$(nodenv init -)"
+eval "$(nodenv init - zsh)"
 
 # alias
 alias vim='nvim'
