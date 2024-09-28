@@ -4,35 +4,12 @@ return {
     "mattn/emmet-vim",
     event = { "BufRead", "BufNewFile" },
     init = function()
-      vim.g.user_emmet_leader_key = "<C-e>" -- Control+f+,に設定
+      vim.g.user_emmet_leader_key = "<C-e>" -- Control+e+,に設定
+      vim.g.user_emmet_settings = {
+        php = {
+          extends = "html",
+        },
+      }
     end,
   },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = {
-  --     -- @type lspconfig.options
-  --     servers = {
-  --       emmet_language_server = {
-  --         filetypes = {
-  --           "html",
-  --           "typescriptreact",
-  --           "javascriptreact",
-  --           "css",
-  --           "sass",
-  --           "scss",
-  --           "less",
-  --           "php",
-  --         },
-  --         init_options = {
-  --           html = {
-  --             options = {
-  --               -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L26
-  --               ["bem.enabled"] = true,
-  --             },
-  --           },
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
 }
