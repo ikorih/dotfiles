@@ -1,32 +1,23 @@
 return {
-  -- {
-  --   enabled = false,
-  --   "folke/flash.nvim",
-  --   ---@type Flash.Config
-  --   opts = {
-  --     search = {
-  --       forward = true,
-  --       multi_window = false,
-  --       wrap = false,
-  --       incremental = true,
-  --     },
-  --   },
-  -- },
-
-  -- {
-  --   "windwp/nvim-autopairs",
-  --   event = "InsertEnter",
-  --   config = true,
-  --   -- use opts = {} for passing setup options
-  --   -- this is equalent to setup({}) function
-  -- },
-
   {
+    --[[
+    概要:
+    vim-expand-regionは、ビジュアルモードで選択範囲を拡大・縮小するためのプラグインです。
+    単語、括弧、段落などのテキストオブジェクトを基準に範囲を動的に調整できます。
+
+    使用方法:
+    1. ビジュアルモードで"v"キーを押して選択モードに入る。
+    2. "v"キーを押すごとに選択範囲が拡大。
+    3. "V"キーを押すと選択範囲が縮小。
+
+    カスタマイズ:
+    以下の`expand_region_text_objects`で拡大・縮小時の対象テキストオブジェクトを調整可能。
+    ]]
     "terryma/vim-expand-region",
     event = "VeryLazy",
     keys = {
-      { "v", mode = { "x" }, "<Plug>(expand_region_expand)", desc = "expand_region_expand" },
-      { "V", mode = { "x" }, "<Plug>(expand_region_shrink)", desc = "expand_region_shrink" },
+      { "v", mode = { "x" }, "<Plug>(expand_region_expand)", desc = "expand_region_expand" }, -- 選択範囲を拡大
+      { "V", mode = { "x" }, "<Plug>(expand_region_shrink)", desc = "expand_region_shrink" }, -- 選択範囲を縮小
     },
     init = function()
       vim.cmd([[
@@ -48,8 +39,23 @@ return {
   },
 
   {
+    --[[
+    概要:
+    nvim-surroundは、テキストの周囲に括弧や引用符を簡単に追加・削除・変更できるプラグインです。
+    Vimの "vim-surround" をベースにした進化版で、高速かつ拡張性があります。
+
+    使用方法:
+    1. 追加: 通常モードで `ys<motion><char>` 
+       例: `ysiw"` → カーソル位置の単語をダブルクォートで囲む
+    2. 削除: 通常モードで `ds<char>`
+       例: `ds"` → ダブルクォートを削除
+    3. 置換: 通常モードで `cs<char1><char2>`
+       例: `cs"'` → ダブルクォートをシングルクォートに置換
+    4. ビジュアルモード: 選択後に `S<char>` で囲みを追加
+       例: 選択範囲をダブルクォートで囲む場合、`S"`
+    ]]
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- 安定バージョンを使用。最新機能が必要ならこの行を省略して `main` ブランチを使用
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({
@@ -59,6 +65,19 @@ return {
   },
 
   {
+
+    --[[
+    概要:
+    この設定はnvim-lspconfigを使用してESLintを統合するものです。
+    LazyVimフレームワークを活用し、ESLintによる診断とフォーマットを効率的に管理します。
+    また、Neovimのバージョンに応じて動作を切り替え、古いバージョンでも対応可能。
+
+    使用方法:
+    - プロジェクト内に`.eslintrc`ファイルを配置することで、ESLintが有効化されます。
+    - LazyVimのフォーマット機能を使用して`:Format`コマンドでESLintのフォーマットを実行可能。
+    - Neovim 0.10.0未満では`EslintFixAll`が代わりに使用されます。
+    ]]
+    --
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
@@ -107,192 +126,5 @@ return {
         end,
       },
     },
-  },
-
-  {
-    "dinhhuy258/git.nvim",
-    event = "BufReadPre",
-    opts = {
-      keymaps = {
-        -- Open blame window
-        blame = "<Leader>gb",
-        -- Open file/folder in git repository
-        browse = "<Leader>go",
-      },
-    },
-  },
-
-  {
-    "telescope.nvim",
-    dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-      },
-      "nvim-telescope/telescope-file-browser.nvim",
-    },
-    keys = {
-      {
-        "<leader>fP",
-        function()
-          require("telescope.builtin").find_files({
-            cwd = require("lazy.core.config").options.root,
-          })
-        end,
-        desc = "Find Plugin File",
-      },
-      {
-        "<C-t>",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
-            no_ignore = false,
-            hidden = true,
-          })
-        end,
-        desc = "Lists files in your current working directory, respects .gitignore",
-      },
-      {
-        ";f",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
-            no_ignore = false,
-            hidden = true,
-          })
-        end,
-        desc = "Lists files in your current working directory, respects .gitignore",
-      },
-      {
-        ";r",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.live_grep({
-            additional_args = { "--hidden" },
-          })
-        end,
-        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
-      },
-      {
-        "\\\\",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.buffers()
-        end,
-        desc = "Lists open buffers",
-      },
-      {
-        ";t",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.help_tags()
-        end,
-        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
-      },
-      {
-        ";;",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.resume()
-        end,
-        desc = "Resume the previous telescope picker",
-      },
-      {
-        ";e",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.diagnostics()
-        end,
-        desc = "Lists Diagnostics for all open buffers or a specific buffer",
-      },
-      {
-        ";s",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.treesitter()
-        end,
-        desc = "Lists Function names, variables, from Treesitter",
-      },
-      {
-        "sf",
-        function()
-          local telescope = require("telescope")
-
-          local function telescope_buffer_dir()
-            return vim.fn.expand("%:p:h")
-          end
-
-          telescope.extensions.file_browser.file_browser({
-            path = "%:p:h",
-            cwd = telescope_buffer_dir(),
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = false,
-            initial_mode = "normal",
-            layout_config = { height = 40 },
-          })
-        end,
-        desc = "Open File Browser with the path of the current buffer",
-      },
-    },
-    config = function(_, opts)
-      local telescope = require("telescope")
-      local actions = require("telescope.actions")
-      local fb_actions = require("telescope").extensions.file_browser.actions
-
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-        wrap_results = true,
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
-        mappings = {
-          n = {},
-        },
-      })
-      opts.pickers = {
-        diagnostics = {
-          theme = "ivy",
-          initial_mode = "normal",
-          layout_config = {
-            preview_cutoff = 9999,
-          },
-        },
-      }
-      opts.extensions = {
-        file_browser = {
-          theme = "dropdown",
-          -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
-          mappings = {
-            -- your custom insert mode mappings
-            ["n"] = {
-              -- your custom normal mode mappings
-              ["N"] = fb_actions.create,
-              ["h"] = fb_actions.goto_parent_dir,
-              ["/"] = function()
-                vim.cmd("startinsert")
-              end,
-              ["<C-u>"] = function(prompt_bufnr)
-                for i = 1, 10 do
-                  actions.move_selection_previous(prompt_bufnr)
-                end
-              end,
-              ["<C-d>"] = function(prompt_bufnr)
-                for i = 1, 10 do
-                  actions.move_selection_next(prompt_bufnr)
-                end
-              end,
-              ["<PageUp>"] = actions.preview_scrolling_up,
-              ["<PageDown>"] = actions.preview_scrolling_down,
-            },
-          },
-        },
-      }
-      telescope.setup(opts)
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("file_browser")
-    end,
   },
 }
