@@ -11,3 +11,5 @@ vim.opt.wrap = true
 
 -- Set filetype for nunjucks files
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, { pattern = "*.njk", command = "set filetype=html" })
+
+vim.g.snacks_animate = false

@@ -127,4 +127,31 @@ return {
       },
     },
   },
+
+  {
+    -- Neovim のタブバーやバッファラインを操作
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    keys = {
+      --[[
+    概要:
+    bufferline.nvim は、タブバーやバッファラインを視覚的に表示・操作するプラグインです。
+
+    使用方法:
+    - <Tab>: 次のバッファに移動
+    - <S-Tab>: 前のバッファに移動
+    ]]
+      --
+
+      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
+      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
+    },
+    opts = {
+      options = {
+        mode = "tabs", -- タブモードで動作
+        show_buffer_close_icons = false, -- バッファ閉じるアイコンを非表示
+        show_close_icon = false, -- 全体の閉じるアイコンを非表示
+      },
+    },
+  },
 }
