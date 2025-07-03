@@ -108,6 +108,11 @@ if [ -e ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
 
+# 秘密情報ファイル（例: ~/.zshrc_secrets）が存在する場合に読み込む
+if [ -f ~/.zshrc_secrets ]; then
+  source ~/.zshrc_secrets
+fi
+
 
 #--------------------------------------
 # Plugins
