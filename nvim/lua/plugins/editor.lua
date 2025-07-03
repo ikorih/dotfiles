@@ -154,4 +154,15 @@ return {
       },
     },
   },
+
+  {
+    "folke/ts-comments.nvim",
+    opts = function(_, opts)
+      opts.lang = opts.lang or {}
+      opts.lang.scss = {
+        line = nil, -- 行コメント（//）を無効化
+        block = { "/*", "*/" }, -- ブロックコメントを使用
+      }
+    end,
+  },
 }

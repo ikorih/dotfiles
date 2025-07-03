@@ -17,6 +17,7 @@ keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
 -- 挿入モードで"jk"を押すことでノーマルモードに戻る
 keymap.set("i", "jk", "<ESC>", opts)
+keymap.set("i", "jj", "<ESC>", opts)
 
 -- <C-t> を <leader>ff と同じ動作に設定
 keymap.set("n", "<C-t>", function()
