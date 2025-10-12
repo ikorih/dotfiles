@@ -1,8 +1,9 @@
 return {
   -- mini.align の設定
   {
-    "echasnovski/mini.align",
+    "nvim-mini/mini.align",
     keys = { "ga", "gA" }, -- 整列コマンドにキーバインドを割り当て
+    event = "VeryLazy",
     config = function()
       --[[
       概要:
@@ -27,7 +28,7 @@ return {
   -- https://github.com/LazyVim/LazyVim/pull/1434
   -- mini.ai の設定
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     opts = function(_, opts)
       --[[
       概要:
