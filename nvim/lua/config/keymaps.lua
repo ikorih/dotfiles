@@ -11,10 +11,6 @@ keymap.set("n", "x", '"_x')
 -- 新しいタブを開くためのキー設定（"te"で新しいタブを開く）
 keymap.set("n", "te", ":tabedit")
 
--- Tabキーで次のタブに移動し、Shift+Tabで前のタブに戻る
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
-
 -- 挿入モードで"jk"を押すことでノーマルモードに戻る
 keymap.set("i", "jk", "<ESC>", opts)
 keymap.set("i", "jj", "<ESC>", opts)
