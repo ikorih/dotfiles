@@ -29,3 +29,8 @@ vim.g.lazyvim_eslint_auto_format = true
 -- LSP Server to use for PHP.
 -- Set to "intelephense" to use intelephense instead of phpactor.
 -- vim.g.lazyvim_php_lsp = "intelephense"
+
+-- Enable the option to show hexadecimal values in the color picker popup
+vim.opt.display:append("uhex")
+
+require("config.invisible_chars").setup()
