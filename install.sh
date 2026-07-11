@@ -22,12 +22,27 @@ usage() {
   echo $YELLOW
   cat <<\EOF
 Commands:
+  setup-brew (install Homebrew and packages from Brewfile)
   font-nerd (install Nerd Font)
   setup-links (create symbolic links for Apple Silicon or Ubuntu)
   setup-git (configure global Git settings)
   quit
 EOF
   echo $NORMAL
+}
+
+setup_brew() {
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "${BLUE}Installing Homebrew...${NORMAL}"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if [[ "$(uname)" == "Darwin" && -x /opt/homebrew/bin/brew ]]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+  fi
+  echo "${BLUE}Installing packages from Brewfile...${NORMAL}"
+  echo "${YELLOW}Note: mas apps require you to be signed in to the App Store.${NORMAL}"
+  brew bundle install --file ~/dotfiles/Brewfile
+  echo "${GREEN}Homebrew setup completed!${NORMAL}"
 }
 
 nerd_fonts() {
@@ -77,6 +92,10 @@ main() {
   echo -n "${BOLD}command: $NORMAL"
   read command
   case $command in
+  setup-brew)
+    setup_brew
+    main
+    ;;
   font-nerd)
     nerd_fonts Meslo
     main
